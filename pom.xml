@@ -19,7 +19,10 @@ specific language governing permissions and limitations
 under the License.
 -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd
+        https://www.gradle.com/gradle-enterprise-maven-project https://www.gradle.com/schema/gradle-enterprise-maven-project.xsd" >
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
@@ -432,6 +435,21 @@ under the License.
   <build>
     <pluginManagement>
       <plugins>
+        <plugin>
+          <groupId>com.gradle</groupId>
+          <artifactId>gradle-enterprise-maven-extension</artifactId>
+          <configuration>
+            <gradleEnterprise xmlns="https://www.gradle.com/gradle-enterprise-maven-project">
+              <normalization>
+                <runtimeClassPath>
+                  <ignoredFiles>
+                    <ignoredFile>META-INF/build.properties</ignoredFile>
+                  </ignoredFiles>
+                </runtimeClassPath>
+              </normalization>
+            </gradleEnterprise>
+          </configuration>
+        </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>buildnumber-maven-plugin</artifactId>
